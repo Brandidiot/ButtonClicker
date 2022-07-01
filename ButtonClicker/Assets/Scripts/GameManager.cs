@@ -4,27 +4,68 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+    
+    public double CurrentScore { get; private set; }
+    public double ScorePerSecondMultiplier { get; private set; }
+    
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI multiplierText;
+
+    #region Main Variables
     
     private NumberFormat _numberFormat;
-    [SerializeField] private double _currentScore;
     private double _multiplier;
+    double _scorePerSecond;
+    
+    #endregion
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
         _numberFormat = GetComponent<NumberFormat>();
-        _currentScore = 0;
-        _multiplier = 1;
+        CurrentScore = 0f;
+        _multiplier = 1f;
+        _scorePerSecond = 1f;
+        ScorePerSecondMultiplier = 0f;
+        
+        multiplierText.text = "Per Second: " + ScorePerSecondMultiplier.ToString("F2");
     }
 
     private void Update()
     {
-        scoreText.text = "$" + _numberFormat.ShortNotation(_currentScore);
+        //Update Score Text
+        scoreText.text = "$" + _numberFormat.ShortNotation(CurrentScore);
+        
+        //Add Score Per Second Multiplier
+        _scorePerSecond = ScorePerSecondMultiplier * Time.deltaTime;
+        CurrentScore += _scorePerSecond;
+        multiplierText.text = "Per Second: " + Mathf.Round((float)ScorePerSecondMultiplier * 100f) / 100f;;
     }
 
     public void ButtonClick()
     {
-        _currentScore += _multiplier;
+        CurrentScore += _multiplier;
     }
-    
+
+    public void PurchaseUpgrade(int cost)
+    {
+        CurrentScore -= cost;
+    }
+
+    public void IncreaseSpsMultiplier(float amount)
+    {
+        ScorePerSecondMultiplier += amount;
+    }
 }
