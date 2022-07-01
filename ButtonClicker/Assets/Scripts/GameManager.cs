@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         _scorePerSecond = 1f;
         ScorePerSecondMultiplier = 0f;
         
-        multiplierText.text = "Per Second: " + ScorePerSecondMultiplier.ToString("F2");
+        multiplierText.text = "Per Second: " + Mathf.Round((float)ScorePerSecondMultiplier * 100f) / 100f;
     }
 
     private void Update()
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         //Add Score Per Second Multiplier
         _scorePerSecond = ScorePerSecondMultiplier * Time.deltaTime;
         CurrentScore += _scorePerSecond;
-        multiplierText.text = "Per Second: " + Mathf.Round((float)ScorePerSecondMultiplier * 100f) / 100f;;
+        multiplierText.text = "Per Second: " + Mathf.Round((float)ScorePerSecondMultiplier * 100f) / 100f;
     }
 
     public void ButtonClick()
