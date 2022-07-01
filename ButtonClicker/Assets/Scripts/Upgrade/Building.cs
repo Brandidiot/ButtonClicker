@@ -5,13 +5,14 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI autoClickCostText;
-    [SerializeField] private int buildingLevel = 1;
+    public int BuildingLevel { get; private set; }
     [SerializeField] private int buildingBaseCost = 15;
     [SerializeField] private int buildingCurrentCost;
     [SerializeField] private float upgradeAmount = .1f;
 
     private void Start()
     {
+        BuildingLevel = 1;
         buildingCurrentCost = buildingBaseCost;
         autoClickCostText.text = "$" + buildingCurrentCost;
     }
@@ -21,14 +22,14 @@ public class Building : MonoBehaviour
         GetComponent<Button>().interactable = !(GameManager.Instance.CurrentScore < buildingCurrentCost);
     }
 
-    public void UpgradePurchase()
+    public void BuildingPurchase()
     {
         if (!(GameManager.Instance.CurrentScore >= buildingCurrentCost)) return;
 
-        GameManager.Instance.PurchaseUpgrade(buildingCurrentCost);
+        GameManager.Instance.Purchase(buildingCurrentCost);
         GameManager.Instance.IncreaseSpsMultiplier(upgradeAmount);
         buildingCurrentCost = (int)(buildingCurrentCost * 1.15f);
-        buildingLevel += 1;
+        BuildingLevel += 1;
         autoClickCostText.text = "$" + buildingCurrentCost;
     }
 
@@ -36,6 +37,6 @@ public class Building : MonoBehaviour
     {
         var originalUpgrade = upgradeAmount;
         upgradeAmount *= amount;
-        GameManager.Instance.IncreaseSpsMultiplier((buildingLevel - 1) * upgradeAmount - (buildingLevel - 1) * originalUpgrade);
+        GameManager.Instance.IncreaseSpsMultiplier((BuildingLevel - 1) * upgradeAmount - (BuildingLevel - 1) * originalUpgrade);
     }
 }

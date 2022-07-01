@@ -8,17 +8,13 @@ public class GameManager : MonoBehaviour
     
     public double CurrentScore { get; private set; }
     public double ScorePerSecondMultiplier { get; private set; }
+    public double Multiplier { get; private set; }
     
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI multiplierText;
 
-    #region Main Variables
-    
     private NumberFormat _numberFormat;
-    private double _multiplier;
     double _scorePerSecond;
-    
-    #endregion
 
     private void Awake()
     {
@@ -36,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         _numberFormat = GetComponent<NumberFormat>();
         CurrentScore = 0f;
-        _multiplier = 1f;
+        Multiplier = 1f;
         _scorePerSecond = 1f;
         ScorePerSecondMultiplier = 0f;
         
@@ -52,14 +48,25 @@ public class GameManager : MonoBehaviour
         _scorePerSecond = ScorePerSecondMultiplier * Time.deltaTime;
         CurrentScore += _scorePerSecond;
         multiplierText.text = "Per Second: " + Mathf.Round((float)ScorePerSecondMultiplier * 100f) / 100f;
+        
+        #region Cheats
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            CurrentScore += 1000;
+        }
+#endif
+
+        #endregion
     }
 
     public void ButtonClick()
     {
-        CurrentScore += _multiplier;
+        CurrentScore += Multiplier;
     }
 
-    public void PurchaseUpgrade(int cost)
+    public void Purchase(int cost)
     {
         CurrentScore -= cost;
     }
@@ -67,5 +74,10 @@ public class GameManager : MonoBehaviour
     public void IncreaseSpsMultiplier(float amount)
     {
         ScorePerSecondMultiplier += amount;
+    }
+    
+    public void IncreaseMultiplier(int amount)
+    {
+        Multiplier *= amount;
     }
 }

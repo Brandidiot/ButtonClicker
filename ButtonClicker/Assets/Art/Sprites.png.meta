@@ -10471,33 +10471,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_374
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 754
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 511645e55f79bdac0800000000000000
-      internalID: -3829299978043105003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Thousand fingers
       rect:
         serializedVersion: 2
-        x: 8
+        x: 2
         y: 726
-        width: 32
+        width: 38
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -11122,27 +11101,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_405
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 748
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8dfbe12101ec23b10800000000000000
-      internalID: 1959855356278390744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Sprites_406
       rect:
         serializedVersion: 2
@@ -11437,33 +11395,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_420
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 706
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 04d4f3efa019028d0800000000000000
-      internalID: -2873137085861114560
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Million fingers
       rect:
         serializedVersion: 2
-        x: 8
+        x: 2
         y: 678
-        width: 32
+        width: 38
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -11479,54 +11416,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_422
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 706
-        width: 14
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 924ad405d22d59ca0800000000000000
-      internalID: -6010667035593432023
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_423
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 710
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2adac5f7a01d97a60800000000000000
-      internalID: 7672393283219008930
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Sprites_424
       rect:
         serializedVersion: 2
-        x: 102
+        x: 98
         y: 680
-        width: 36
+        width: 40
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -11983,34 +11878,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_446
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 700
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf9403b55c7353b00800000000000000
-      internalID: 807613028960848380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Sprites_447
       rect:
         serializedVersion: 2
         x: 56
         y: 680
-        width: 32
-        height: 32
+        width: 34
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
