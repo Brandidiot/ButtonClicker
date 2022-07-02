@@ -7,14 +7,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     public double CurrentScore { get; private set; }
-    public double ScorePerSecondMultiplier { get; private set; }
-    public double Multiplier { get; private set; }
+    private double _scorePerSecondMultiplier;
+    private double _multiplier;
     
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI multiplierText;
 
     private NumberFormat _numberFormat;
-    double _scorePerSecond;
+    private double _scorePerSecond;
 
     private void Awake()
     {
@@ -32,11 +32,11 @@ public class GameManager : MonoBehaviour
     {
         _numberFormat = GetComponent<NumberFormat>();
         CurrentScore = 0f;
-        Multiplier = 1f;
+        _multiplier = 1f;
         _scorePerSecond = 1f;
-        ScorePerSecondMultiplier = 0f;
+        _scorePerSecondMultiplier = 0f;
         
-        multiplierText.text = "Per Second: " + Mathf.Round((float)ScorePerSecondMultiplier * 100f) / 100f;
+        multiplierText.text = "Per Second: " + Mathf.Round((float)_scorePerSecondMultiplier * 100f) / 100f;
     }
 
     private void Update()
@@ -45,14 +45,14 @@ public class GameManager : MonoBehaviour
         scoreText.text = "$" + _numberFormat.ShortNotation(CurrentScore);
         
         //Add Score Per Second Multiplier
-        _scorePerSecond = ScorePerSecondMultiplier * Time.deltaTime;
+        _scorePerSecond = _scorePerSecondMultiplier * Time.deltaTime;
         CurrentScore += _scorePerSecond;
-        multiplierText.text = "Per Second: " + Mathf.Round((float)ScorePerSecondMultiplier * 100f) / 100f;
+        multiplierText.text = "Per Second: " + Mathf.Round((float)_scorePerSecondMultiplier * 100f) / 100f;
         
         #region Cheats
 
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKey(KeyCode.K))
         {
             CurrentScore += 1000;
         }
@@ -63,21 +63,21 @@ public class GameManager : MonoBehaviour
 
     public void ButtonClick()
     {
-        CurrentScore += Multiplier;
+        CurrentScore += _multiplier;
     }
 
-    public void Purchase(int cost)
+    public void Purchase(double cost)
     {
         CurrentScore -= cost;
     }
 
     public void IncreaseSpsMultiplier(float amount)
     {
-        ScorePerSecondMultiplier += amount;
+        _scorePerSecondMultiplier += amount;
     }
     
     public void IncreaseMultiplier(int amount)
     {
-        Multiplier *= amount;
+        _multiplier *= amount;
     }
 }

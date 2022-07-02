@@ -1,20 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Upgrade : MonoBehaviour
+public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Building building;
-    [SerializeField] private int upgradeBaseCost = 100;
-    [SerializeField] private int requiredBuildingLevel = 2;
-    [SerializeField] private float upgradeMultiplier = 2;
+
+    [SerializeField] private UpgradeItem upgradeItem;
 
     private Button _upgradeButton;
 
     private void Start()
     {
+        //Listen To Button Event
         _upgradeButton = GetComponent<Button>();
         _upgradeButton.onClick.AddListener(TaskOnClick);
+
+        //Set Sprite At Start
+        GetComponent<Image>().sprite = upgradeItem.Sprite;
         
         //Hide Image & Text
         GetComponent<Image>().enabled = false;
@@ -26,18 +30,21 @@ public class Upgrade : MonoBehaviour
 
     private void TaskOnClick()
     {
-        GameManager.Instance.Purchase(upgradeBaseCost);
-        GameManager.Instance.IncreaseMultiplier((int)upgradeMultiplier);
-        building.UpgradeBuilding(upgradeMultiplier);
+        GameManager.Instance.Purchase(upgradeItem.BaseCost);
+        GameManager.Instance.IncreaseMultiplier((int)upgradeItem.Multiplier);
+        building.UpgradeBuilding(upgradeItem.Multiplier);
+        
+        //Hide Tooltip
+        TooltipSystem.Hide();
 
         gameObject.SetActive(false);
     }
 
     public void Update()
     {
-        if (building.BuildingLevel < requiredBuildingLevel) return;
+        if (building.BuildingLevel < upgradeItem.requiredBuildingLevel) return;
         
-        if (GameManager.Instance.CurrentScore < upgradeBaseCost)
+        if (GameManager.Instance.CurrentScore < upgradeItem.BaseCost)
         {
             GetComponent<Image>().enabled = false;
             foreach (Transform child in transform)
@@ -53,5 +60,16 @@ public class Upgrade : MonoBehaviour
                 child.gameObject.SetActive(true);
             }
         }
+    }
+
+    //Tooltip Info
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        TooltipSystem.Show(upgradeItem.Description, upgradeItem.Name);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipSystem.Hide();
     }
 }
