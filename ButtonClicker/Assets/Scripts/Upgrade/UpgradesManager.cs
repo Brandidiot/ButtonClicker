@@ -29,10 +29,10 @@ public class UpgradesManager : MonoBehaviour
     {
         foreach (var upgrade in upgrades)
         {
-            if (upgrade._purchased) return;
 
             if (!(GameManager.Instance.currentScore >= upgrade.upgradeItem.BaseCost)) continue;
-            if (upgrade.building.buildingLevel >= upgrade.upgradeItem.requiredBuildingLevel)
+            if (upgrade.building.buildingLevel < upgrade.upgradeItem.requiredBuildingLevel) continue;
+            if (!upgrade._purchased)
             {
                 upgrade.gameObject.SetActive(true);
             }
