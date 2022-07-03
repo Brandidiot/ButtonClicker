@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,11 +9,16 @@ public class DataPersistenceManager : MonoBehaviour
     private string fileName;
 
     [SerializeField] private bool useEncryption;
+
+    [Header("Auto Saving")] [SerializeField]
+    private float _autoSaveTimeInSeconds = 30f;
+    
     public static DataPersistenceManager Instance { get; private set; }
 
     private GameData _gameData;
     private List<IDataPersistence> _dataPersistenceObjects;
     private FileDataHandler _dataHandler;
+    private Coroutine _autoSaveCoroutine;
     
     private void Awake()
     {
@@ -36,7 +42,7 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         var dataPersistenceObjects =
-            FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+            FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
 
@@ -51,8 +57,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             data.SaveData(_gameData);
         }
-        Debug.Log("Game Saved");
-        
         _dataHandler.Save(_gameData);
     }
 
@@ -66,16 +70,33 @@ public class DataPersistenceManager : MonoBehaviour
             Default();
         }
 
-        foreach (IDataPersistence data in _dataPersistenceObjects)
+        foreach (var data in _dataPersistenceObjects)
         {
             data.LoadData(_gameData);
         }
         
         Debug.Log("Game Loaded");
+        
+        if (_autoSaveCoroutine != null)
+        {
+            StopCoroutine(_autoSaveCoroutine);
+        }
+
+        _autoSaveCoroutine = StartCoroutine(AutoSave());
     }
 
     private void OnApplicationQuit()
     {
         SaveGame();
+    }
+
+    private IEnumerator AutoSave()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_autoSaveTimeInSeconds);
+            SaveGame();
+            Debug.Log("Auto Saved");
+        }
     }
 }

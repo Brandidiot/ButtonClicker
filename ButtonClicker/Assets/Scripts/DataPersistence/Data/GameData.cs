@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.IO;
+
 [System.Serializable]
 public class GameData
 {
@@ -36,6 +39,9 @@ public class GameData
     public int factoryBaseCost;
     public int factoryCurrentCost;
     public float factoryUpgradeAmount;
+    
+    //Upgrades
+    public SerializableDictionary<string, bool> upgradesPurchased;
 
     //Default Game Data
     public GameData()
@@ -74,5 +80,7 @@ public class GameData
         factoryBaseCost = 130000;
         factoryCurrentCost = factoryBaseCost;
         factoryUpgradeAmount = 260;
+
+        upgradesPurchased = new SerializableDictionary<string, bool>();
     }
 }

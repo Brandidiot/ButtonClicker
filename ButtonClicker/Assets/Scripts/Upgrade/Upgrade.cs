@@ -2,12 +2,23 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
-public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDataPersistence
 {
-    [SerializeField] private Building building;
+    public Building building;
 
-    [SerializeField] private UpgradeItem upgradeItem;
+    public UpgradeItem upgradeItem;
+
+    [SerializeField] private string id;
+
+    public bool _purchased = false;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = Guid.NewGuid().ToString();
+    }
 
     private Button _upgradeButton;
 
@@ -20,27 +31,27 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //Set Sprite At Start
         GetComponent<Image>().sprite = upgradeItem.Sprite;
         
-        //Hide Image & Text
+        /*Hide Image & Text
         GetComponent<Image>().enabled = false;
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(false);
-        }
+        }*/
     }
 
     private void TaskOnClick()
     {
+        _purchased = true;
         GameManager.Instance.Purchase(upgradeItem.BaseCost);
         GameManager.Instance.IncreaseMultiplier((int)upgradeItem.Multiplier);
         building.UpgradeBuilding(upgradeItem.Multiplier);
         
         //Hide Tooltip
         TooltipSystem.Hide();
-
         gameObject.SetActive(false);
     }
 
-    public void Update()
+    /*public void Update()
     {
         if (building.buildingLevel < upgradeItem.requiredBuildingLevel) return;
         
@@ -60,7 +71,7 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 child.gameObject.SetActive(true);
             }
         }
-    }
+    }*/
 
     //Tooltip Info
     public void OnPointerEnter(PointerEventData eventData)
@@ -71,5 +82,23 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerExit(PointerEventData eventData)
     {
         TooltipSystem.Hide();
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.upgradesPurchased.TryGetValue(id, out _purchased);
+        if (_purchased)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (data.upgradesPurchased.ContainsKey(id))
+        {
+            data.upgradesPurchased.Remove(id);
+        }
+        data.upgradesPurchased.Add(id, _purchased);
     }
 }
