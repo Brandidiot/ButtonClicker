@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 983b1b04690f8694c8aa777321753dc3, type: 3}
-  m_Name: Aging agents
+  m_Name: Radium reactors
   m_EditorClassIdentifier: 
-  Sprite: {fileID: -2662730335157537985, guid: 45baa3479a5e2f24aa948559ac334812, type: 3}
-  Name: Aging Agents
-  Description: Grandmas are twice as efficient.
-  BaseCost: 50000000000
-  requiredBuildingLevel: 150
+  Sprite: {fileID: -6844498208627000373, guid: 45baa3479a5e2f24aa948559ac334812, type: 3}
+  Name: Radium Reactors
+  Description: Factories are twice as efficient.
+  BaseCost: 6500000000
+  requiredBuildingLevel: 50
   Multiplier: 2

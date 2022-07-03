@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 983b1b04690f8694c8aa777321753dc3, type: 3}
-  m_Name: Aging agents
+  m_Name: Megadrill
   m_EditorClassIdentifier: 
-  Sprite: {fileID: -2662730335157537985, guid: 45baa3479a5e2f24aa948559ac334812, type: 3}
-  Name: Aging Agents
-  Description: Grandmas are twice as efficient.
-  BaseCost: 50000000000
-  requiredBuildingLevel: 150
+  Sprite: {fileID: 1571997993387287584, guid: 45baa3479a5e2f24aa948559ac334812, type: 3}
+  Name: Megadrill
+  Description: Mines are twice as efficient.
+  BaseCost: 600000
+  requiredBuildingLevel: 5
   Multiplier: 2

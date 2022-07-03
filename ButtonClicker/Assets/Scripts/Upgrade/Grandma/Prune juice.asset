@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Prune Juice
   Description: Grandmas are twice as efficient.
   BaseCost: 5000000
-  requiredBuildingLevel: 51
+  requiredBuildingLevel: 50
   Multiplier: 2

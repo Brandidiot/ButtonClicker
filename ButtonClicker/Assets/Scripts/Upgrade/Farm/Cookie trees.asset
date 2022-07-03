@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Cookie Trees
   Description: Farms are twice as efficient.
   BaseCost: 550000
-  requiredBuildingLevel: 26
+  requiredBuildingLevel: 25
   Multiplier: 2

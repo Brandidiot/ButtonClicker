@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Cheap Hoes
   Description: Farms are twice as efficient.
   BaseCost: 11000
-  requiredBuildingLevel: 2
+  requiredBuildingLevel: 1
   Multiplier: 2

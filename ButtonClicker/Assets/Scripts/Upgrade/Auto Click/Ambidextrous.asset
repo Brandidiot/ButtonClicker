@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Ambidextrous
   Description: The mouse and cursors are twice as efficient.
   BaseCost: 10000
-  requiredBuildingLevel: 11
+  requiredBuildingLevel: 10
   Multiplier: 2

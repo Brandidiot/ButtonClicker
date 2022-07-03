@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Forwards From Grandma
   Description: Grandmas are twice as efficient.
   BaseCost: 1000
-  requiredBuildingLevel: 2
+  requiredBuildingLevel: 1
   Multiplier: 2
