@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Upgrade Item", menuName = "Upgrades/Upgrade Item")]
+[CreateAssetMenu(fileName = "Upgrade Item", menuName = "Button Clicker/Upgrade Item")]
 public class UpgradeItem : ScriptableObject
 {
     public Sprite Sprite;

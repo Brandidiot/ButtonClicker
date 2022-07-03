@@ -1,20 +1,22 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager Instance { get; private set; }
-    
-    public double CurrentScore { get; private set; }
-    private double _scorePerSecondMultiplier;
-    private double _multiplier;
-    
+
+    public double currentScore;
+    public double scorePerSecondMultiplier;
+    public double multiplier;
+    public double scorePerSecond;
+
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI multiplierText;
 
     private NumberFormat _numberFormat;
-    private double _scorePerSecond;
+    
 
     private void Awake()
     {
@@ -31,30 +33,26 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _numberFormat = GetComponent<NumberFormat>();
-        CurrentScore = 0f;
-        _multiplier = 1f;
-        _scorePerSecond = 1f;
-        _scorePerSecondMultiplier = 0f;
         
-        multiplierText.text = "Per Second: " + Mathf.Round((float)_scorePerSecondMultiplier * 100f) / 100f;
+        multiplierText.text = "Per Second: " + Mathf.Round((float)scorePerSecondMultiplier * 100f) / 100f;
     }
 
     private void Update()
     {
         //Update Score Text
-        scoreText.text = "$" + _numberFormat.ShortNotation(CurrentScore);
+        scoreText.text = "$" + _numberFormat.ShortNotation(currentScore);
         
         //Add Score Per Second Multiplier
-        _scorePerSecond = _scorePerSecondMultiplier * Time.deltaTime;
-        CurrentScore += _scorePerSecond;
-        multiplierText.text = "Per Second: " + Mathf.Round((float)_scorePerSecondMultiplier * 100f) / 100f;
+        scorePerSecond = scorePerSecondMultiplier * Time.deltaTime;
+        currentScore += scorePerSecond;
+        multiplierText.text = "Per Second: " + Mathf.Round((float)scorePerSecondMultiplier * 100f) / 100f;
         
         #region Cheats
 
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.K))
         {
-            CurrentScore += 1000;
+            currentScore += 1000;
         }
 #endif
 
@@ -63,21 +61,37 @@ public class GameManager : MonoBehaviour
 
     public void ButtonClick()
     {
-        CurrentScore += _multiplier;
+        currentScore += multiplier;
     }
 
     public void Purchase(double cost)
     {
-        CurrentScore -= cost;
+        currentScore -= cost;
     }
 
     public void IncreaseSpsMultiplier(float amount)
     {
-        _scorePerSecondMultiplier += amount;
+        scorePerSecondMultiplier += amount;
     }
     
     public void IncreaseMultiplier(int amount)
     {
-        _multiplier *= amount;
+        multiplier *= amount;
+    }
+
+    public void LoadData(GameData data)
+    {
+        currentScore = data.currentScore;
+        scorePerSecondMultiplier = data.scorePerSecondMultiplier;
+        multiplier = data.multiplier;
+        scorePerSecond = data.scorePerSecond;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.currentScore = (float)currentScore;
+        data.scorePerSecondMultiplier = (float)scorePerSecondMultiplier;
+        data.multiplier = (float)multiplier;
+        data.scorePerSecond = (float)scorePerSecond;
     }
 }

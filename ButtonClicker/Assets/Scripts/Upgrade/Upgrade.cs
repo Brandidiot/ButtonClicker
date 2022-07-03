@@ -42,9 +42,9 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Update()
     {
-        if (building.BuildingLevel < upgradeItem.requiredBuildingLevel) return;
+        if (building.buildingLevel < upgradeItem.requiredBuildingLevel) return;
         
-        if (GameManager.Instance.CurrentScore < upgradeItem.BaseCost)
+        if (GameManager.Instance.currentScore < upgradeItem.BaseCost)
         {
             GetComponent<Image>().enabled = false;
             foreach (Transform child in transform)
