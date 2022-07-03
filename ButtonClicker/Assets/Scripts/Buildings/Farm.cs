@@ -11,7 +11,7 @@ public class Farm : Building, IDataPersistence
         buildingCurrentCost = data.farmCurrentCost;
         upgradeAmount = data.farmUpgradeAmount;
         
-        costText.text = "$" + buildingCurrentCost;
+        costText.text = "$" + NumberFormat.Instance.ShortNotation(buildingCurrentCost);
     }
 
     public new void SaveData(GameData data)

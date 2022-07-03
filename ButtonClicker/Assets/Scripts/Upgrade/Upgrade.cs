@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.VFX;
 
 public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDataPersistence
 {

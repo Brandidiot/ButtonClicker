@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 
 public class AutoClick : Building, IDataPersistence
 {
@@ -11,7 +14,7 @@ public class AutoClick : Building, IDataPersistence
         buildingCurrentCost = data.clickCurrentCost;
         upgradeAmount = data.clickUpgradeAmount;
         
-        costText.text = "$" + buildingCurrentCost;
+        costText.text = "$" + NumberFormat.Instance.ShortNotation(buildingCurrentCost);
     }
 
     public new void SaveData(GameData data)

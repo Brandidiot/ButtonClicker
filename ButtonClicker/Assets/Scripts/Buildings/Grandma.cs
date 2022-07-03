@@ -11,7 +11,7 @@ public class Grandma : Building, IDataPersistence
         buildingCurrentCost = data.grandmaCurrentCost;
         upgradeAmount = data.grandmaUpgradeAmount;
         
-        costText.text = "$" + buildingCurrentCost;
+        costText.text = "$" + NumberFormat.Instance.ShortNotation(buildingCurrentCost);
     }
 
     public new void SaveData(GameData data)

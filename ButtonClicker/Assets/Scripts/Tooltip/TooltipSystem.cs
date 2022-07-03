@@ -29,4 +29,9 @@ public class TooltipSystem : MonoBehaviour
     {
         Instance.tooltip.gameObject.SetActive(false);
     }
+
+    public static void UpdateTooltip()
+    {
+        
+    }
 }

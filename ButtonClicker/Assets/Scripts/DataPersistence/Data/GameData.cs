@@ -12,32 +12,32 @@ public class GameData
     
     //Auto Click Data
     public int clickLevel;
-    public int clickBaseCost;
-    public int clickCurrentCost;
+    public float clickBaseCost;
+    public float clickCurrentCost;
     public float clickUpgradeAmount;
     
     //Grandma Data
     public int grandmaLevel;
-    public int grandmaBaseCost;
-    public int grandmaCurrentCost;
+    public float grandmaBaseCost;
+    public float grandmaCurrentCost;
     public float grandmaUpgradeAmount;
     
     //Farm Data
     public int farmLevel;
-    public int farmBaseCost;
-    public int farmCurrentCost;
+    public float farmBaseCost;
+    public float farmCurrentCost;
     public float farmUpgradeAmount;
     
     //Mine Data
     public int mineLevel;
-    public int mineBaseCost;
-    public int mineCurrentCost;
+    public float mineBaseCost;
+    public float mineCurrentCost;
     public float mineUpgradeAmount;
     
     //Factory Data
     public int factoryLevel;
-    public int factoryBaseCost;
-    public int factoryCurrentCost;
+    public float factoryBaseCost;
+    public float factoryCurrentCost;
     public float factoryUpgradeAmount;
     
     //Upgrades

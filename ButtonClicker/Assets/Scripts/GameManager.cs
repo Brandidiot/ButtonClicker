@@ -14,10 +14,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI multiplierText;
-
-    private NumberFormat _numberFormat;
-    
-
+   
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,15 +29,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        _numberFormat = GetComponent<NumberFormat>();
-        
         multiplierText.text = "Per Second: " + Mathf.Round((float)scorePerSecondMultiplier * 100f) / 100f;
     }
 
     private void Update()
     {
         //Update Score Text
-        scoreText.text = "$" + _numberFormat.ShortNotation(currentScore);
+        scoreText.text = "$" + NumberFormat.Instance.ShortNotation(currentScore);
         
         //Add Score Per Second Multiplier
         scorePerSecond = scorePerSecondMultiplier * Time.deltaTime;

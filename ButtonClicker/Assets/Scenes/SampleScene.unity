@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shortNames:
-  - Million
+  - Millions
   - Billion
   - Trillion
   - Quadrillion
@@ -1322,6 +1322,7 @@ MonoBehaviour:
   building: {fileID: 242542643}
   upgradeItem: {fileID: 11400000, guid: 9e1043e799ca2db44b49fb39d34bd423, type: 2}
   id: 746cbb9c-82fe-47d8-ba53-37b29e26623d
+  _purchased: 0
 --- !u!114 &454284380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1978,6 +1979,7 @@ MonoBehaviour:
   building: {fileID: 242542643}
   upgradeItem: {fileID: 11400000, guid: 6b79c64d21190494390ceebe3af9ce81, type: 2}
   id: 87483f75-91bf-4b58-9197-6a6390a4d953
+  _purchased: 0
 --- !u!114 &745668355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,6 +2116,7 @@ MonoBehaviour:
   building: {fileID: 175280641}
   upgradeItem: {fileID: 11400000, guid: 8bf8576eabe38f24bacd28d4daf08b86, type: 2}
   id: 6223f75f-8840-441a-9dc4-fdfce12ff2ff
+  _purchased: 0
 --- !u!114 &789589435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,6 +2523,7 @@ MonoBehaviour:
   building: {fileID: 242542643}
   upgradeItem: {fileID: 11400000, guid: 3c45b94798aa5e448842c702bbc7b71b, type: 2}
   id: 891f6058-5cc8-415d-87ed-0b481737877a
+  _purchased: 0
 --- !u!114 &911274309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3032,6 +3036,7 @@ MonoBehaviour:
   building: {fileID: 1946103376}
   upgradeItem: {fileID: 11400000, guid: d622526b0b7f8e544b314d0b219802e3, type: 2}
   id: 9b05e426-9dfd-40df-a29a-7802cbad2112
+  _purchased: 0
 --- !u!1 &1003651538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,6 +3539,7 @@ MonoBehaviour:
   building: {fileID: 1946103376}
   upgradeItem: {fileID: 11400000, guid: e4ee0fc195ab4ec4cb1f90bf7b9f17b4, type: 2}
   id: e92efd87-9d11-4279-b564-9c6fda4360d7
+  _purchased: 0
 --- !u!114 &1271577157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4134,6 +4140,7 @@ MonoBehaviour:
   building: {fileID: 1946103376}
   upgradeItem: {fileID: 11400000, guid: 4b63a5f6ed48a0745ac7e6e11170cbc1, type: 2}
   id: 912d7aa0-3193-471c-af8e-c17e44bf8aee
+  _purchased: 0
 --- !u!114 &1486329873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4690,6 +4697,7 @@ MonoBehaviour:
   building: {fileID: 242542643}
   upgradeItem: {fileID: 11400000, guid: b67af6816c983dd44a92737acb7130f0, type: 2}
   id: fcad8000-aa41-4564-83e5-da4d2a25c066
+  _purchased: 0
 --- !u!114 &1708715322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4962,6 +4970,7 @@ MonoBehaviour:
   building: {fileID: 242542643}
   upgradeItem: {fileID: 11400000, guid: ad9aa29270f996a4b90ae55ac8967d58, type: 2}
   id: fb6f182a-81be-4aa7-b225-38d434cd1eda
+  _purchased: 0
 --- !u!114 &1797585782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5365,6 +5374,7 @@ MonoBehaviour:
   building: {fileID: 175280641}
   upgradeItem: {fileID: 11400000, guid: b55654360714cf24686c750d076fa91d, type: 2}
   id: caaf6e33-46bc-42d1-9a19-c0af31559f3d
+  _purchased: 0
 --- !u!114 &1892110375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5728,6 +5738,7 @@ MonoBehaviour:
   building: {fileID: 242542643}
   upgradeItem: {fileID: 11400000, guid: c1f7ad4d283d97b40879b95dbfaa0fc7, type: 2}
   id: 48f66dec-0047-4345-9877-7e3492953c68
+  _purchased: 0
 --- !u!114 &2036088844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6132,6 +6143,7 @@ MonoBehaviour:
   building: {fileID: 175280641}
   upgradeItem: {fileID: 11400000, guid: d793165bba6133847b61f02f8db5f8ff, type: 2}
   id: 0d8616b1-5438-4bac-a9dc-e5b91c53747b
+  _purchased: 0
 --- !u!114 &2138653950
 MonoBehaviour:
   m_ObjectHideFlags: 0

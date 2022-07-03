@@ -3,6 +3,20 @@ using UnityEngine;
 
 public class NumberFormat : MonoBehaviour
 {
+    public static NumberFormat Instance { get; private set; }
+        
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+    
     public string[] shortNames = new string[10]
     {
         "Millions",

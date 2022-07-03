@@ -11,7 +11,7 @@ public class Factory : Building, IDataPersistence
         buildingCurrentCost = data.factoryCurrentCost;
         upgradeAmount = data.factoryUpgradeAmount;
         
-        costText.text = "$" + buildingCurrentCost;
+        costText.text = "$" + NumberFormat.Instance.ShortNotation(buildingCurrentCost);
     }
 
     public new void SaveData(GameData data)

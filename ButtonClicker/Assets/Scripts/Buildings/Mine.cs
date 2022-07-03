@@ -11,7 +11,7 @@ public class Mine : Building, IDataPersistence
         buildingCurrentCost = data.mineCurrentCost;
         upgradeAmount = data.mineUpgradeAmount;
         
-        costText.text = "$" + buildingCurrentCost;
+        costText.text = "$" + NumberFormat.Instance.ShortNotation(buildingCurrentCost);
     }
 
     public new void SaveData(GameData data)

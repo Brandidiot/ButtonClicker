@@ -22,12 +22,17 @@ public class UpgradesManager : MonoBehaviour
 
     private void Update()
     {
+        CheckUpgrades();
+    }
+
+    private void CheckUpgrades()
+    {
         foreach (var upgrade in upgrades)
         {
             if (upgrade._purchased) return;
 
-            if (GameManager.Instance.currentScore >= upgrade.upgradeItem.BaseCost 
-                && upgrade.building.buildingLevel >= upgrade.upgradeItem.requiredBuildingLevel)
+            if (!(GameManager.Instance.currentScore >= upgrade.upgradeItem.BaseCost)) continue;
+            if (upgrade.building.buildingLevel >= upgrade.upgradeItem.requiredBuildingLevel)
             {
                 upgrade.gameObject.SetActive(true);
             }
