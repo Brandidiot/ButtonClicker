@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Fertilizer
   Description: Farms are twice as efficient.
   BaseCost: 55000
-  requiredBuildingLevel: 6
+  requiredBuildingLevel: 5
   Multiplier: 2

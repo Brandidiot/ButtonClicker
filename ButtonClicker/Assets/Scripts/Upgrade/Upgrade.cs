@@ -11,7 +11,7 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     [SerializeField] private string id;
 
-    public bool _purchased = false;
+    public bool purchased = false;
 
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid()
@@ -29,48 +29,23 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
         //Set Sprite At Start
         GetComponent<Image>().sprite = upgradeItem.Sprite;
-        
-        /*Hide Image & Text
-        GetComponent<Image>().enabled = false;
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }*/
     }
 
     private void TaskOnClick()
     {
-        _purchased = true;
-        GameManager.Instance.Purchase(upgradeItem.BaseCost);
-        GameManager.Instance.IncreaseMultiplier((int)upgradeItem.Multiplier);
-        building.UpgradeBuilding(upgradeItem.Multiplier);
+        //Upgrade has been purchased
+        purchased = true;
         
-        //Hide Tooltip
+        GameManager.Instance.Purchase(upgradeItem.BaseCost); //Remove currency
+        GameManager.Instance.IncreaseMultiplier((int)upgradeItem.Multiplier); //Increase the GameManager multiplier
+        building.UpgradeBuilding(upgradeItem.Multiplier); //Increase the Buildings multiplier
+        
+        //Hide Tooltip & Upgrade
         TooltipSystem.Hide();
         gameObject.SetActive(false);
     }
 
-    /*public void Update()
-    {
-        if (building.buildingLevel < upgradeItem.requiredBuildingLevel) return;
-        
-        if (GameManager.Instance.currentScore < upgradeItem.BaseCost)
-        {
-            GetComponent<Image>().enabled = false;
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            GetComponent<Image>().enabled = true;
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(true);
-            }
-        }
-    }*/
+    #region Tooltip System
 
     //Tooltip Info
     public void OnPointerEnter(PointerEventData eventData)
@@ -82,11 +57,15 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     {
         TooltipSystem.Hide();
     }
+    
+    #endregion
+
+    #region Save System
 
     public void LoadData(GameData data)
     {
-        data.upgradesPurchased.TryGetValue(id, out _purchased);
-        if (_purchased)
+        data.upgradesPurchased.TryGetValue(id, out purchased);
+        if (purchased)
         {
             gameObject.SetActive(false);
         }
@@ -98,6 +77,8 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         {
             data.upgradesPurchased.Remove(id);
         }
-        data.upgradesPurchased.Add(id, _purchased);
+        data.upgradesPurchased.Add(id, purchased);
     }
+    
+    #endregion
 }

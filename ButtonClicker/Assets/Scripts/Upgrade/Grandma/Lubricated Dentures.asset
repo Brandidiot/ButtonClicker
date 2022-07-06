@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Lubricated Dentures
   Description: Grandmas are twice as efficient.
   BaseCost: 50000
-  requiredBuildingLevel: 26
+  requiredBuildingLevel: 25
   Multiplier: 2

@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Carpal Tunnel Prevention Cream
   Description: The mouse and cursors are twice as efficient.
   BaseCost: 500
-  requiredBuildingLevel: 2
+  requiredBuildingLevel: 1
   Multiplier: 2

@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Reinforced Index Finger
   Description: The mouse and cursors are twice as efficient.
   BaseCost: 100
-  requiredBuildingLevel: 2
+  requiredBuildingLevel: 1
   Multiplier: 2
